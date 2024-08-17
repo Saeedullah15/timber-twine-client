@@ -5,6 +5,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import App from './App';
+import PrivateRoute from './components/PrivateRoute';
 import './index.css';
 import AddCraft from "./pages/AddCraft/AddCraft";
 import AllArtCraft from './pages/AllArtCraft/AllArtCraft';
@@ -37,11 +38,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/add-craft-item",
-                element: <AddCraft></AddCraft>
+                element: <PrivateRoute><AddCraft></AddCraft></PrivateRoute>
             },
             {
                 path: "/my-art-and-craft-list",
-                element: <MyArtCraft></MyArtCraft>
+                element: <PrivateRoute><MyArtCraft></MyArtCraft></PrivateRoute>
             }
         ]
     },
