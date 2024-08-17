@@ -1,9 +1,12 @@
-import React, { useContext } from 'react';
+import { updateProfile } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
+import auth from '../../firebase/firebase.config';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
     const { createUser } = useContext(AuthContext);
+    const [error, setError] = useState("");
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -17,23 +20,42 @@ const Register = () => {
         const newUserInfo = { name, email, photo, password };
         console.log(newUserInfo);
 
-        createUser(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
+        // password validation
+        const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        if (!regex.test(password)) {
+            setError("Password must be an uppercase, a lowercase, minimum 6 characters long");
+        }
+        else {
+            createUser(email, password)
+                .then(result => {
+                    const user = result.user;
+                    console.log(user);
 
-                Swal.fire({
-                    title: 'Success',
-                    text: 'You have successfully created your account!',
-                    icon: 'success',
-                    confirmButtonText: 'Ok'
-                });
+                    setError("");
 
-                form.reset();
-            })
-            .catch(error => {
-                console.log(error);
-            })
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'You have successfully created your account!',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    });
+
+                    form.reset();
+
+                    updateProfile(auth.currentUser, {
+                        displayName: name, photoURL: photo
+                    })
+                        .then(() => {
+                            console.log("profile updated");
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
     }
 
     return (
@@ -68,6 +90,7 @@ const Register = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                            <small className='text-red-500 text-center my-2'>{error}</small>
                             <label className="label">
                                 <a href="/login" className="label-text-alt link link-hover">Already have account? Login!</a>
                             </label>

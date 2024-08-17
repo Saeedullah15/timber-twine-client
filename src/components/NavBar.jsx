@@ -1,13 +1,36 @@
-import React from 'react';
+import { signOut } from 'firebase/auth';
+import React, { useContext } from 'react';
+import { CgProfile } from "react-icons/cg";
 import { Link, NavLink } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import auth from '../firebase/firebase.config';
+import { AuthContext } from '../providers/AuthProvider';
 
 const NavBar = () => {
+    const { user } = useContext(AuthContext);
+
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/all-art-and-craft-items">All Art & Craft Items</NavLink></li>
         <li><NavLink to="/add-craft-item">Add Craft Item</NavLink></li>
         <li><NavLink to="/my-art-and-craft-list">My Art & Craft List</NavLink></li>
     </>
+
+    const handleLogout = (e) => {
+        signOut(auth)
+            .then(result => {
+                console.log("logged out successfully");
+                Swal.fire({
+                    title: 'Success',
+                    text: 'You have successfully logged out!',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
     return (
         <nav>
@@ -50,8 +73,24 @@ const NavBar = () => {
 
                 {/* login & register */}
                 <div className="navbar-end space-x-2">
-                    <Link to="/login"><button className="btn">Login</button></Link>
-                    <Link to="/register"><button className="btn">Register</button></Link>
+                    {
+                        user ?
+                            <>
+                                <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
+                                    <div className="avatar">
+                                        <div className="w-12 rounded-full">
+                                            <img src={user.photoURL === null ? <span><CgProfile /></span> : user.photoURL} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <button onClick={handleLogout} className="btn">Log Out</button>
+                            </>
+                            :
+                            <>
+                                <Link to="/login"><button className="btn">Login</button></Link>
+                                <Link to="/register"><button className="btn">Register</button></Link>
+                            </>
+                    }
                 </div>
             </div>
         </nav>
