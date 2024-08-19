@@ -1,10 +1,12 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AddCraft = () => {
     const handleAddItem = (e) => {
         e.preventDefault();
 
         const form = e.target;
+
         const image = form.image.value;
         const item_name = form.item_name.value;
         const subcategory_name = form.subcategory_name.value;
@@ -16,8 +18,30 @@ const AddCraft = () => {
         const stock_status = form.stock_status.value;
         const user_name = form.user_name.value;
         const user_email = form.user_email.value;
+
         const newItemInfo = { image, item_name, subcategory_name, description, price, rating, customization, processing_time, stock_status, user_name, user_email };
-        console.log(newItemInfo);
+        // console.log(newItemInfo);
+
+        fetch("http://localhost:3000/addItem", {
+            method: "post",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(newItemInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'You have successfully added an item!',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                }
+            })
     }
 
     return (
