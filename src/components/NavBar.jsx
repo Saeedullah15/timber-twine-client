@@ -1,6 +1,5 @@
 import { signOut } from 'firebase/auth';
 import React, { useContext } from 'react';
-import { CgProfile } from "react-icons/cg";
 import { Link, NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import auth from '../firebase/firebase.config';
@@ -76,14 +75,14 @@ const NavBar = () => {
                     {
                         user ?
                             <>
-                                <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
+                                <div className="tooltip tooltip-bottom" data-tip={user.displayName === null ? "name not set yet" : user.displayName}>
                                     <div className="avatar">
                                         <div className="w-12 rounded-full">
-                                            <img src={user.photoURL === null ? <span><CgProfile /></span> : user.photoURL} />
+                                            <img src={user.photoURL === null ? "https://cdn-icons-png.flaticon.com/512/2919/2919906.png" : user.photoURL} />
                                         </div>
                                     </div>
                                 </div>
-                                <button onClick={handleLogout} className="btn">Log Out</button>
+                                <button onClick={handleLogout} className="btn mb-1">Log Out</button>
                             </>
                             :
                             <>

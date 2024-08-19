@@ -1,7 +1,5 @@
-import { updateProfile } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
-import auth from '../../firebase/firebase.config';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
@@ -42,15 +40,15 @@ const Register = () => {
 
                     form.reset();
 
-                    updateProfile(auth.currentUser, {
-                        displayName: name, photoURL: photo
-                    })
-                        .then(() => {
-                            console.log("profile updated");
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        })
+                    // updateProfile(auth.currentUser, {
+                    //     displayName: name, photoURL: photo
+                    // })
+                    //     .then(() => {
+                    //         console.log("profile updated");
+                    //     })
+                    //     .catch(error => {
+                    //         console.log(error);
+                    //     })
                 })
                 .catch(error => {
                     console.log(error);
@@ -71,11 +69,11 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" name='name' placeholder="name" className="input input-bordered" required />
+                            <input type="text" name='name' placeholder="name" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Email</span>
+                                <span className="label-text">Email*</span>
                             </label>
                             <input type="email" name='email' placeholder="email" className="input input-bordered" required />
                         </div>
@@ -83,11 +81,11 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">PhotoURL</span>
                             </label>
-                            <input type="text" name='photo' placeholder="photo url" className="input input-bordered" required />
+                            <input type="text" name='photo' placeholder="photo url" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Password</span>
+                                <span className="label-text">Password*</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                             <small className='text-red-500 text-center my-2'>{error}</small>
