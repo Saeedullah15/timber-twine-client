@@ -9,6 +9,7 @@ import PrivateRoute from './components/PrivateRoute';
 import './index.css';
 import AddCraft from "./pages/AddCraft/AddCraft";
 import AllArtCraft from './pages/AllArtCraft/AllArtCraft';
+import CraftItemDetails from './pages/CraftItemDetails/CraftItemDetails';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import MyArtCraft from "./pages/MyArtCraft/MyArtCraft";
@@ -43,6 +44,11 @@ const router = createBrowserRouter([
             {
                 path: "/my-art-and-craft-list",
                 element: <PrivateRoute><MyArtCraft></MyArtCraft></PrivateRoute>
+            },
+            {
+                path: "/craftItemDetails/:id",
+                element: <CraftItemDetails></CraftItemDetails>,
+                loader: ({ params }) => fetch(`http://localhost:3000/craftItemDetails/${params.id}`)
             }
         ]
     },
