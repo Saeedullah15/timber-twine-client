@@ -10,5 +10,8 @@ export default {
     plugins: [
         require('daisyui'),
     ],
+    daisyui: {
+        themes: ["light", "synthwave", "forest", "night", "dim", "aqua", "cmyk"],
+    },
 }
 

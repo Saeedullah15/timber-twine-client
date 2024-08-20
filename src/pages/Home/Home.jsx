@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Fade } from "react-awesome-reveal";
 import AboutUs from '../../components/AboutUs';
 import ArtCraftCategories from '../../components/ArtCraftCategories';
 import CraftItems from '../../components/CraftItems';
@@ -33,7 +34,9 @@ const Home = () => {
                         :
                         " "
                 }
-                <h2 className='text-2xl font-bold text-center mb-8'>Some Craft Items</h2>
+                <Fade>
+                    <h2 className='text-2xl font-bold text-center mb-8'>Some Craft Items</h2>
+                </Fade>
                 <div className='flex md:flex-row flex-col flex-wrap justify-center items-center gap-10'>
                     {
                         craftItems.map(eachCraftItem => <CraftItems

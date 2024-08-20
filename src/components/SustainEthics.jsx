@@ -1,9 +1,12 @@
 import React from 'react';
+import { Fade } from 'react-awesome-reveal';
 
 const SustainEthics = () => {
     return (
         <div className='my-20'>
-            <h2 className='text-2xl font-bold text-center mb-8'>Sustainability & Ethics</h2>
+            <Fade>
+                <h2 className='text-2xl font-bold text-center mb-8'>Sustainability & Ethics</h2>
+            </Fade>
             <div className='text-justify w-4/5 mx-auto space-y-2'>
                 <div>
                     <h4 className='text-lg font-bold'>Our Commitment to the Environment</h4>
