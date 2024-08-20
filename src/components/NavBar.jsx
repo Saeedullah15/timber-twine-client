@@ -7,12 +7,13 @@ import { AuthContext } from '../providers/AuthProvider';
 
 const NavBar = () => {
     const { user } = useContext(AuthContext);
+    console.log(user.email);
 
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/all-art-and-craft-items">All Art & Craft Items</NavLink></li>
         <li><NavLink to="/add-craft-item">Add Craft Item</NavLink></li>
-        <li><NavLink to="/my-art-and-craft-list">My Art & Craft List</NavLink></li>
+        <li><NavLink to={`/my-art-and-craft-list/${user.email}`}>My Art & Craft List</NavLink></li>
     </>
 
     const handleLogout = (e) => {
