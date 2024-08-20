@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const CraftItems = ({ eachCraftItem }) => {
-    console.log(eachCraftItem);
+    // console.log(eachCraftItem);
 
     const { _id, image, item_name, subcategory_name, description, price, rating, customization, processing_time, stock_status, user_name, user_email } = eachCraftItem;
 

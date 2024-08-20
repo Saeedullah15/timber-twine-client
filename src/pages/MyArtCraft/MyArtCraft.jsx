@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const MyArtCraft = () => {
-    const data = useLoaderData();
-    const [items, setItems] = useState(data);
+    const { user } = useContext(AuthContext);
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/myCraftItems/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                setItems(data);
+                setLoading(false);
+            })
+    }, [])
 
     const yes = items.filter(item => item.customization === "Yes");
     const no = items.filter(item => item.customization === "No");
-    console.log(yes, no);
+    // console.log(yes, no);
 
     const handleDeleteItem = (_id) => {
         Swal.fire({
@@ -46,6 +58,15 @@ const MyArtCraft = () => {
 
     return (
         <>
+            {
+                loading ?
+                    <div className='flex justify-center mt-3 mb-6'>
+                        <span className="loading loading-spinner text-info"></span>
+                    </div>
+                    :
+                    " "
+            }
+
             {/* dropdown */}
             <div className='flex justify-center'>
                 <div className="dropdown dropdown-hover mt-10">

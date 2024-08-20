@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, setLoading } = useContext(AuthContext);
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -39,6 +41,7 @@ const Register = () => {
                     });
 
                     form.reset();
+                    navigate("/");
 
                     // updateProfile(auth.currentUser, {
                     //     displayName: name, photoURL: photo

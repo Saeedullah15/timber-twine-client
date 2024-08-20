@@ -2,6 +2,7 @@ import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebas
 import React, { useContext } from 'react';
 import { FcGoogle } from "react-icons/fc";
 import { SiGithub } from "react-icons/si";
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import auth from '../../firebase/firebase.config';
 import { AuthContext } from '../../providers/AuthProvider';
@@ -10,7 +11,10 @@ const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
 const Login = () => {
-    const { signInUser } = useContext(AuthContext);
+    const { signInUser, setLoading } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location.state);
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -18,9 +22,6 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-
-        const userInfo = { email, password };
-        console.log(userInfo);
 
         signInUser(email, password)
             .then(result => {
@@ -35,6 +36,7 @@ const Login = () => {
                 });
 
                 form.reset();
+                navigate(location.state ? location.state : "/");
             })
             .catch(error => {
 
@@ -53,6 +55,7 @@ const Login = () => {
 
     const handleGoogleLogin = (e) => {
         e.preventDefault();
+        setLoading(true);
 
         signInWithPopup(auth, googleProvider)
             .then(result => {
@@ -65,6 +68,8 @@ const Login = () => {
                     icon: 'success',
                     confirmButtonText: 'Ok'
                 });
+
+                navigate(location.state ? location.state : "/");
             })
             .catch(error => {
                 console.log(error);
@@ -73,6 +78,7 @@ const Login = () => {
 
     const handleGithubLogin = (e) => {
         e.preventDefault();
+        setLoading(true);
 
         signInWithPopup(auth, githubProvider)
             .then(result => {
@@ -85,6 +91,8 @@ const Login = () => {
                     icon: 'success',
                     confirmButtonText: 'Ok'
                 });
+
+                navigate(location.state ? location.state : "/");
             })
             .catch(error => {
                 console.log(error);

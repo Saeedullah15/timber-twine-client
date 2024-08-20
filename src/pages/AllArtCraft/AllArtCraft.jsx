@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const AllArtCraft = () => {
     const data = useLoaderData();
-    console.log(data);
+    // console.log(data);
 
     let count = 1;
 
