@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const MyArtCraft = () => {
     const data = useLoaderData();
@@ -25,7 +25,7 @@ const MyArtCraft = () => {
             {/* craft item cards */}
             <div className='flex md:flex-row flex-col flex-wrap justify-center items-center gap-10 mt-10 mb-20'>
                 {
-                    items.map(eachCraft => <div className="card card-compact bg-base-100 lg:w-96 md:w-80 shadow-xl">
+                    items.map(eachCraft => <div key={eachCraft._id} className="card card-compact bg-base-100 lg:w-96 md:w-80 shadow-xl">
                         <figure>
                             <img className='h-48 w-full' src={eachCraft.image} alt="Shoes" />
                         </figure>
@@ -38,7 +38,9 @@ const MyArtCraft = () => {
 
                             {/* actions */}
                             <div className="card-actions justify-end">
-                                <button className="btn btn-info">Update</button>
+                                <Link to={`/update-craft-item/${eachCraft._id}`}>
+                                    <button className="btn btn-info">Update</button>
+                                </Link>
                                 <button className="btn btn-warning">Delete</button>
                             </div>
                         </div>

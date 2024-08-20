@@ -15,6 +15,7 @@ import Login from './pages/Login/Login';
 import MyArtCraft from "./pages/MyArtCraft/MyArtCraft";
 import NotFound from './pages/NotFound/NotFound';
 import Register from './pages/Register/Register';
+import UpdateCraft from './pages/UpdateCraft/UpdateCraft';
 import AuthProvider from './providers/AuthProvider';
 
 const router = createBrowserRouter([
@@ -52,6 +53,11 @@ const router = createBrowserRouter([
             {
                 path: "/craftItemDetails/:id",
                 element: <PrivateRoute><CraftItemDetails></CraftItemDetails></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:3000/craftItemDetails/${params.id}`)
+            },
+            {
+                path: "/update-craft-item/:id",
+                element: <UpdateCraft></UpdateCraft>,
                 loader: ({ params }) => fetch(`http://localhost:3000/craftItemDetails/${params.id}`)
             }
         ]
