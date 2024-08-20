@@ -13,6 +13,7 @@ import CraftItemDetails from './pages/CraftItemDetails/CraftItemDetails';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import MyArtCraft from "./pages/MyArtCraft/MyArtCraft";
+import NotFound from './pages/NotFound/NotFound';
 import Register from './pages/Register/Register';
 import AuthProvider from './providers/AuthProvider';
 
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <App></App>,
+        errorElement: <NotFound></NotFound>,
         children: [
             {
                 path: "/",
