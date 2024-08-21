@@ -49,54 +49,40 @@ const UpdateCraft = () => {
     }
 
     return (
-        <div className="card bg-base-100 w-2/3 mx-auto shadow-2xl my-20">
+        <div className="card bg-base-100 xl:w-2/3 md:w-5/6 mx-auto shadow-2xl my-20">
             <h2 className='text-2xl font-bold text-center mt-6'>Update Your Craft Item</h2>
             <form onSubmit={handleUpdateItem} className="card-body space-y-2">
-                <div className="flex gap-4">
-                    <label className="input input-bordered w-full flex items-center gap-2">
-                        Image
-                        <input type="text" name='image' defaultValue={image} className="grow" placeholder="Image URL" />
-                    </label>
-                    <label className="input input-bordered w-full flex items-center gap-2">
-                        Item Name
-                        <input type="text" name='item_name' defaultValue={item_name} className="grow" placeholder="Name of the Item you want to Add" />
-                    </label>
+                <div className="flex flex-col gap-4">
+                    <label htmlFor="image">Image URL</label>
+                    <input type="text" name='image' defaultValue={image} className="input input-bordered w-full" placeholder="Image URL" />
+
+                    <label htmlFor="item_name">Item Name</label>
+                    <input type="text" name='item_name' defaultValue={item_name} className="input input-bordered w-full" placeholder="Name of the Item you want to Add" />
                 </div>
-                <div className="flex gap-4">
-                    <label className="input input-bordered w-full flex items-center gap-2">
-                        Subcategory Name
-                        <input type="text" name='subcategory_name' defaultValue={subcategory_name} className="grow" placeholder="Subcategory Name of the Item" />
-                    </label>
-                    <label className="input input-bordered w-full flex items-center gap-2">
-                        Short Description
-                        <input type="text" name='description' defaultValue={description} className="grow" placeholder="A description about the Item" />
-                    </label>
+                <div className="flex flex-col gap-4">
+                    <label htmlFor="subcategory_name">Subcategory Name</label>
+                    <input type="text" name='subcategory_name' defaultValue={subcategory_name} className="input input-bordered w-full" placeholder="Subcategory Name of the Item" />
+
+                    <label htmlFor="description">Description</label>
+                    <input type="text" name='description' defaultValue={description} className="input input-bordered w-full" placeholder="A description about the Item" />
                 </div>
-                <div className="flex gap-4">
-                    <label className="input input-bordered w-full flex items-center gap-2">
-                        Price
-                        <input type="number" name='price' defaultValue={price} className="grow" placeholder="Item Price" />
-                    </label>
-                    <label className="input input-bordered w-full flex items-center gap-2">
-                        Rating
-                        <input type="text" name='rating' defaultValue={rating} className="grow" placeholder="Item rating" />
-                    </label>
+                <div className="flex flex-col gap-4">
+                    <label htmlFor="price">Price</label>
+                    <input type="number" name='price' defaultValue={price} className="input input-bordered w-full" placeholder="Item Price" />
+
+                    <label htmlFor="rating">Rating</label>
+                    <input type="text" name='rating' defaultValue={rating} className="input input-bordered w-full" placeholder="Item rating" />
                 </div>
-                <div className="flex gap-4">
-                    <label className="input input-bordered w-full flex items-center gap-2">
-                        Customization
-                        <input type="text" name='customization' defaultValue={customization} className="grow" placeholder="Type yes or no" />
-                    </label>
-                    <label className="input input-bordered w-full flex items-center gap-2">
-                        Processing Time
-                        <input type="number" name='processing_time' defaultValue={processing_time} className="grow" placeholder="How many days it will take?" />
-                    </label>
+                <div className="flex flex-col gap-4">
+                    <label htmlFor="customization">Customization</label>
+                    <input type="text" name='customization' defaultValue={customization} className="input input-bordered w-full" placeholder="Type yes or no" />
+
+                    <label htmlFor="processing_time">Processing Time</label>
+                    <input type="number" name='processing_time' defaultValue={processing_time} className="input input-bordered w-full" placeholder="How many days it will take?" />
                 </div>
-                <div className="flex gap-4">
-                    <label className="input input-bordered w-full flex items-center gap-2">
-                        Stock Status
-                        <input type="text" name='stock_status' defaultValue={stock_status} className="grow" placeholder="In stock/Made to Order" />
-                    </label>
+                <div className="flex flex-col gap-4">
+                    <label htmlFor="stock_status">Stock Status</label>
+                    <input type="text" name='stock_status' defaultValue={stock_status} className="input input-bordered w-full" placeholder="In stock/Made to Order" />
                 </div>
                 <div className="mt-6 flex justify-center">
                     <button type='submit' className="btn btn-primary w-40">Update Item</button>

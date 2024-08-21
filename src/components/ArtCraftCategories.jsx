@@ -7,7 +7,7 @@ const ArtCraftCategories = ({ category }) => {
 
     return (
         <Link to={`/eachCategoryCraftItems/${subcategory_name}`}>
-            <div className="w-48 h-32 cursor-pointer">
+            <div className="w-48 h-44 cursor-pointer pb-10">
                 <figure className='w-48 h-32'>
                     <img className='w-full h-full' src={image} alt="Shoes" />
                 </figure>

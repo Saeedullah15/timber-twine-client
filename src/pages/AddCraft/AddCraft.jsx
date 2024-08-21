@@ -48,63 +48,31 @@ const AddCraft = () => {
 
     return (
         <div className='my-20'>
-            <div className="card bg-base-100 w-2/3 mx-auto shadow-2xl">
+            <div className="card bg-base-100 xl:w-2/3 md:w-5/6 mx-auto shadow-2xl">
                 <h2 className='text-2xl font-bold text-center mt-6'>Add New Craft Item</h2>
                 <form onSubmit={handleAddItem} className="card-body space-y-2">
-                    <div className="flex gap-4">
-                        <label className="input input-bordered w-full flex items-center gap-2">
-                            Image
-                            <input type="text" name='image' className="grow" placeholder="Image URL" />
-                        </label>
-                        <label className="input input-bordered w-full flex items-center gap-2">
-                            Item Name
-                            <input type="text" name='item_name' className="grow" placeholder="Name of the Item you want to Add" />
-                        </label>
+                    <div className="flex flex-col lg:flex-row gap-4">
+                        <input type="text" name='image' className="input input-bordered w-full" placeholder="Image URL" />
+                        <input type="text" name='item_name' className="input input-bordered w-full" placeholder="Item Name" />
+                    </div>
+                    <div className="flex flex-col lg:flex-row gap-4">
+                        <input type="text" name='subcategory_name' className="input input-bordered w-full" placeholder="Subcategory Name" />
+                        <input type="text" name='description' className="input input-bordered w-full" placeholder="About the Item" />
+                    </div>
+                    <div className="flex flex-col lg:flex-row gap-4">
+                        <input type="number" name='price' className="input input-bordered w-full" placeholder="Price" />
+                        <input type="text" name='rating' className="input input-bordered w-full" placeholder="Rating (0 to 5)" />
+                    </div>
+                    <div className="flex flex-col lg:flex-row gap-4">
+                        <input type="text" name='customization' className="input input-bordered w-full" placeholder="Type Yes or No" />
+                        <input type="number" name='processing_time' className="input input-bordered w-full" placeholder="How many days?" />
+                    </div>
+                    <div className="flex flex-col lg:flex-row gap-4">
+                        <input type="text" name='stock_status' className="input input-bordered w-full" placeholder="In stock/Made to Order" />
+                        <input type="text" name='user_name' className="input input-bordered w-full" placeholder="Name of the User" />
                     </div>
                     <div className="flex gap-4">
-                        <label className="input input-bordered w-full flex items-center gap-2">
-                            Subcategory Name
-                            <input type="text" name='subcategory_name' className="grow" placeholder="Subcategory Name of the Item" />
-                        </label>
-                        <label className="input input-bordered w-full flex items-center gap-2">
-                            Short Description
-                            <input type="text" name='description' className="grow" placeholder="A description about the Item" />
-                        </label>
-                    </div>
-                    <div className="flex gap-4">
-                        <label className="input input-bordered w-full flex items-center gap-2">
-                            Price
-                            <input type="number" name='price' className="grow" placeholder="Item Price" />
-                        </label>
-                        <label className="input input-bordered w-full flex items-center gap-2">
-                            Rating
-                            <input type="text" name='rating' className="grow" placeholder="Item rating" />
-                        </label>
-                    </div>
-                    <div className="flex gap-4">
-                        <label className="input input-bordered w-full flex items-center gap-2">
-                            Customization
-                            <input type="text" name='customization' className="grow" placeholder="Type yes or no" />
-                        </label>
-                        <label className="input input-bordered w-full flex items-center gap-2">
-                            Processing Time
-                            <input type="number" name='processing_time' className="grow" placeholder="How many days it will take?" />
-                        </label>
-                    </div>
-                    <div className="flex gap-4">
-                        <label className="input input-bordered w-full flex items-center gap-2">
-                            Stock Status
-                            <input type="text" name='stock_status' className="grow" placeholder="In stock/Made to Order" />
-                        </label><label className="input input-bordered w-full flex items-center gap-2">
-                            User Name
-                            <input type="text" name='user_name' className="grow" placeholder="Name of the User" />
-                        </label>
-                    </div>
-                    <div className="flex gap-4">
-                        <label className="input input-bordered w-full flex items-center gap-2">
-                            User Email
-                            <input type="email" name='user_email' className="grow" placeholder="Email of the User" />
-                        </label>
+                        <input type="email" name='user_email' className="input input-bordered w-full" placeholder="Email of the User" />
                     </div>
                     <div className="mt-6 flex justify-center">
                         <button type='submit' className="btn btn-primary w-40">Add Item</button>

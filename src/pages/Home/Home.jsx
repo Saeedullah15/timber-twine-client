@@ -49,7 +49,7 @@ const Home = () => {
                 <Fade>
                     <h2 className='text-2xl font-bold text-center mb-8'>Some Craft Items</h2>
                 </Fade>
-                <div className='flex md:flex-row flex-col flex-wrap justify-center items-center gap-10'>
+                <div className='w-5/6 md:w-full mx-auto flex md:flex-row flex-col flex-wrap justify-center items-center gap-10'>
                     {
                         craftItems.map(eachCraftItem => <CraftItems
                             key={eachCraftItem._id}
@@ -71,7 +71,7 @@ const Home = () => {
                 <Fade>
                     <h2 className='text-2xl font-bold text-center mb-8'>Craft Categories</h2>
                 </Fade>
-                <div className='flex md:flex-row flex-col flex-wrap justify-center items-center gap-4'>
+                <div className='w-full md:w-5/6 xl:w-full mx-auto flex md:flex-row flex-col flex-wrap justify-center items-center gap-4'>
                     {
                         categories.map(category => <ArtCraftCategories
                             key={category._id}

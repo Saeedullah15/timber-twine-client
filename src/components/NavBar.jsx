@@ -38,44 +38,20 @@ const NavBar = () => {
     return (
         <nav>
             {/* logo for small device */}
-            <a className="md:text-2xl font-bold md:hidden block text-center p-2 bg-lime-100">Timber & Twine</a>
-            <div className="navbar bg-base-100">
-                <div className="navbar-start">
-                    <div className="dropdown">
-                        <div tabIndex={0} role="button" className="lg:hidden mr-4">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-8 w-8"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M4 6h16M4 12h8m-8 6h16" />
-                            </svg>
-                        </div>
-                        {/* small device */}
-                        <ul
-                            tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-                            {navLinks}
-                        </ul>
-                    </div>
-                    {/* logo for large device */}
-                    <a className="md:text-2xl w-52 mr-20 font-bold hidden md:block">
-                        <Typewriter
-                            words={['Timber & Twine']}
-                            loop={0}
-                            cursor
-                            cursorStyle='_'
-                            typeSpeed={70}
-                            deleteSpeed={50}
-                            delaySpeed={1000}
-                        />
-                    </a>
-                    {/* toggle light and dark mode */}
+            <div className='flex items-center justify-between bg-lime-100 pr-2'>
+                <a className="md:text-2xl text-xl font-bold xl:hidden block text-center p-2">
+                    <Typewriter
+                        words={['Timber & Twine']}
+                        loop={0}
+                        cursor
+                        cursorStyle='_'
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={1000}
+                    />
+                </a>
+                {/* toggle light and dark mode */}
+                <div className='xl:hidden block'>
                     <label className="flex cursor-pointer gap-2">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -106,10 +82,89 @@ const NavBar = () => {
                         </svg>
                     </label>
                 </div>
+            </div>
+            <div className="navbar bg-base-100">
+                <div className="navbar-start">
+                    {/* small device div */}
+                    <div className="dropdown">
+                        <div tabIndex={0} role="button" className="lg:hidden mr-4">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-8 w-8"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </div>
+                        {/* small device */}
+                        <ul
+                            tabIndex={0}
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
+                            {navLinks}
+                        </ul>
+                    </div>
+
+                    {/* logo for large device */}
+                    <a className="xl:text-2xl xl:w-52 xl:mr-20 font-bold hidden xl:block">
+                        <Typewriter
+                            words={['Timber & Twine']}
+                            loop={0}
+                            cursor
+                            cursorStyle='_'
+                            typeSpeed={70}
+                            deleteSpeed={50}
+                            delaySpeed={1000}
+                        />
+                    </a>
+
+                    {/* toggle light and dark mode */}
+                    <div className='hidden xl:block'>
+                        <label className="flex cursor-pointer gap-2">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round">
+                                <circle cx="12" cy="12" r="5" />
+                                <path
+                                    d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+                            </svg>
+                            <input type="checkbox" value="night" className="toggle theme-controller" />
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </label>
+                    </div>
+                    {/* large device */}
+                    <div className="lg:flex xl:hidden hidden">
+                        <ul className="menu menu-horizontal px-1">
+                            {navLinks}
+                        </ul>
+                    </div>
+                </div>
 
 
                 {/* large device */}
-                <div className="navbar-center hidden lg:flex">
+                <div className="navbar-center lg:hidden hidden xl:flex">
                     <ul className="menu menu-horizontal px-1">
                         {navLinks}
                     </ul>

@@ -18,9 +18,18 @@ const MyArtCraft = () => {
             })
     }, [])
 
-    const yes = items.filter(item => item.customization === "Yes");
-    const no = items.filter(item => item.customization === "No");
-    // console.log(yes, no);
+    const handleFilter = (string) => {
+        if (string === "Yes") {
+            const filtered = items.filter(item => item.customization === "Yes");
+            setItems(filtered);
+            setLoading(false);
+        }
+        else if (string === "No") {
+            const filtered = items.filter(item => item.customization === "No");
+            setItems(filtered);
+            setLoading(false);
+        }
+    }
 
     const handleDeleteItem = (_id) => {
         Swal.fire({
@@ -72,8 +81,8 @@ const MyArtCraft = () => {
                 <div className="dropdown dropdown-hover mt-10">
                     <div tabIndex={0} role="button" className="btn btn-primary m-1">Filter by Customization</div>
                     <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow">
-                        <li onClick={() => setItems(yes)}><a>Yes</a></li>
-                        <li onClick={() => setItems(no)}><a>No</a></li>
+                        <li onClick={() => handleFilter("Yes")}><a>Yes</a></li>
+                        <li onClick={() => handleFilter("No")}><a>No</a></li>
                     </ul>
                 </div>
             </div>
