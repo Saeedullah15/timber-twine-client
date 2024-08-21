@@ -10,6 +10,7 @@ import './index.css';
 import AddCraft from "./pages/AddCraft/AddCraft";
 import AllArtCraft from './pages/AllArtCraft/AllArtCraft';
 import CraftItemDetails from './pages/CraftItemDetails/CraftItemDetails';
+import EachCategoryCraftItems from './pages/EachCategoryCraftItems/EachCategoryCraftItems';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import MyArtCraft from "./pages/MyArtCraft/MyArtCraft";
@@ -58,6 +59,11 @@ const router = createBrowserRouter([
                 path: "/update-craft-item/:id",
                 element: <UpdateCraft></UpdateCraft>,
                 loader: ({ params }) => fetch(`http://localhost:3000/craftItemDetails/${params.id}`)
+            },
+            {
+                path: "/eachCategoryCraftItems/:subcategory",
+                element: <EachCategoryCraftItems></EachCategoryCraftItems>,
+                loader: ({ params }) => fetch(`http://localhost:3000/subcategoryItems/${params.subcategory}`)
             }
         ]
     },

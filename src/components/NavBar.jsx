@@ -8,7 +8,7 @@ import { AuthContext } from '../providers/AuthProvider';
 
 const NavBar = () => {
     const { user, setLoading } = useContext(AuthContext);
-    // console.log(user.email);
+    // console.log(user);
 
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -64,7 +64,7 @@ const NavBar = () => {
                         </ul>
                     </div>
                     {/* logo for large device */}
-                    <a className="md:text-2xl font-bold hidden md:block mr-20">
+                    <a className="md:text-2xl w-52 mr-20 font-bold hidden md:block">
                         <Typewriter
                             words={['Timber & Twine']}
                             loop={0}
@@ -76,7 +76,7 @@ const NavBar = () => {
                         />
                     </a>
                     {/* toggle light and dark mode */}
-                    <label className="flex cursor-pointer fixed left-80 gap-2">
+                    <label className="flex cursor-pointer gap-2">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="20"
@@ -120,7 +120,7 @@ const NavBar = () => {
                     {
                         user ?
                             <>
-                                <div className="tooltip tooltip-bottom" data-tip={user.displayName === null ? "name not set yet" : user.displayName}>
+                                <div className="tooltip tooltip-bottom z-10" data-tip={user.displayName === null ? "name not set yet" : user.displayName}>
                                     <div className="avatar">
                                         <div className="w-12 rounded-full">
                                             <img src={user.photoURL === null ? "https://cdn-icons-png.flaticon.com/512/2919/2919906.png" : user.photoURL} />

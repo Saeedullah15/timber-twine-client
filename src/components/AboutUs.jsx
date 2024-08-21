@@ -3,7 +3,7 @@ import { Fade } from 'react-awesome-reveal';
 
 const AboutUs = () => {
     return (
-        <div className='my-20'>
+        <div className='mt-32 mb-20'>
             <Fade>
                 <h2 className='text-2xl font-bold text-center mb-8'>About Us</h2>
             </Fade>

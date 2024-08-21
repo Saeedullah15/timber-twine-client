@@ -8,15 +8,27 @@ import SustainEthics from '../../components/SustainEthics';
 
 const Home = () => {
     const [craftItems, setCraftItems] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch("http://localhost:3000/craftItems")
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
 
                 setCraftItems(data);
+                setLoading(false);
+            })
+    }, [])
+
+    useEffect(() => {
+        fetch("http://localhost:3000/subcategories")
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+
+                setCategories(data);
                 setLoading(false);
             })
     }, [])
@@ -46,7 +58,28 @@ const Home = () => {
                     }
                 </div>
             </section>
-            <ArtCraftCategories></ArtCraftCategories>
+            {/* sub categories section */}
+            <section>
+                {
+                    loading ?
+                        <div className='flex justify-center mt-3 mb-6'>
+                            <span className="loading loading-spinner text-info"></span>
+                        </div>
+                        :
+                        " "
+                }
+                <Fade>
+                    <h2 className='text-2xl font-bold text-center mb-8'>Craft Categories</h2>
+                </Fade>
+                <div className='flex md:flex-row flex-col flex-wrap justify-center items-center gap-4'>
+                    {
+                        categories.map(category => <ArtCraftCategories
+                            key={category._id}
+                            category={category}
+                        ></ArtCraftCategories>)
+                    }
+                </div>
+            </section>
             <AboutUs></AboutUs>
             <SustainEthics></SustainEthics>
         </div>
