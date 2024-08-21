@@ -22,7 +22,7 @@ const AddCraft = () => {
         const newItemInfo = { image, item_name, subcategory_name, description, price, rating, customization, processing_time, stock_status, user_name, user_email };
         // console.log(newItemInfo);
 
-        fetch("http://localhost:3000/addItem", {
+        fetch("https://timber-twine-server.vercel.app/addItem", {
             method: "post",
             headers: {
                 "content-type": "application/json"

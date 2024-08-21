@@ -12,7 +12,7 @@ const Home = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:3000/craftItems")
+        fetch("https://timber-twine-server.vercel.app/craftItems")
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -23,7 +23,7 @@ const Home = () => {
     }, [])
 
     useEffect(() => {
-        fetch("http://localhost:3000/subcategories")
+        fetch("https://timber-twine-server.vercel.app/subcategories")
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

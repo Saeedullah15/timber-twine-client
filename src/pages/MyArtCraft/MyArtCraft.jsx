@@ -9,7 +9,7 @@ const MyArtCraft = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/myCraftItems/${user.email}`)
+        fetch(`https://timber-twine-server.vercel.app/myCraftItems/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -34,7 +34,7 @@ const MyArtCraft = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:3000/deleteCraftItem/${_id}`, {
+                    fetch(`https://timber-twine-server.vercel.app/deleteCraftItem/${_id}`, {
                         method: "delete"
                     })
                         .then(res => res.json())

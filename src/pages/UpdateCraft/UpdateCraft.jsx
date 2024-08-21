@@ -26,7 +26,7 @@ const UpdateCraft = () => {
         const updatedItemInfo = { image, item_name, subcategory_name, description, price, rating, customization, processing_time, stock_status };
         // console.log(newItemInfo);
 
-        fetch(`http://localhost:3000/updateItem/${_id}`, {
+        fetch(`https://timber-twine-server.vercel.app/updateItem/${_id}`, {
             method: "put",
             headers: {
                 "content-type": "application/json"

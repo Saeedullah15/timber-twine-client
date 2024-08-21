@@ -40,7 +40,7 @@ const router = createBrowserRouter([
             {
                 path: "/all-art-and-craft-items",
                 element: <AllArtCraft></AllArtCraft>,
-                loader: () => fetch("http://localhost:3000/craftItems")
+                loader: () => fetch("https://timber-twine-server.vercel.app/craftItems")
             },
             {
                 path: "/add-craft-item",
@@ -53,17 +53,17 @@ const router = createBrowserRouter([
             {
                 path: "/craftItemDetails/:id",
                 element: <PrivateRoute><CraftItemDetails></CraftItemDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:3000/craftItemDetails/${params.id}`)
+                loader: ({ params }) => fetch(`https://timber-twine-server.vercel.app/craftItemDetails/${params.id}`)
             },
             {
                 path: "/update-craft-item/:id",
                 element: <UpdateCraft></UpdateCraft>,
-                loader: ({ params }) => fetch(`http://localhost:3000/craftItemDetails/${params.id}`)
+                loader: ({ params }) => fetch(`https://timber-twine-server.vercel.app/craftItemDetails/${params.id}`)
             },
             {
                 path: "/eachCategoryCraftItems/:subcategory",
                 element: <EachCategoryCraftItems></EachCategoryCraftItems>,
-                loader: ({ params }) => fetch(`http://localhost:3000/subcategoryItems/${params.subcategory}`)
+                loader: ({ params }) => fetch(`https://timber-twine-server.vercel.app/subcategoryItems/${params.subcategory}`)
             }
         ]
     },
